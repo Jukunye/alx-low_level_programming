@@ -2,7 +2,12 @@
 #include <time.h>
 /* more headers goes there */
 #include <stdio.h>
-/* betty style doc for function main goes there */
+/**
+ * main - Entry point
+ * Description: 'I have designed the program to identify the last digit'
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
 	int n;
@@ -18,7 +23,7 @@ int main(void)
 	}
 	else if (x == 0)
 	{
-		printf("Last digit of %d is %d and is zero\n", n, x);
+		printf("Last digit of %d is %d and is 0\n", n, x);
 	}
 	else if (x < 6)
 	{
