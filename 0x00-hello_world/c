@@ -732,5 +732,5 @@ extern int __overflow (FILE *, int);
 # 7 "main.c"
 int main(void)
 {
-         return (o);
+         return (0);
 }
