@@ -1,23 +1,24 @@
 #include "main.h"
 
 /**
- * print_alphabet_x10 - Entry point
- *
- * Description: 'this program will print alphabets x10'
- *
+ * print_alphabet_x10 - Make alphabet x10 times
  * Return: void
  */
 
 void print_alphabet_x10(void)
-{
-	int a;
-	int n = 1;
 
-	while (n <= 10)
+{
+
+	char c;
+	int i = 0;
+
+	while (i <= 9)
 	{
-	for (a = 'a'; a <= 'z'; a++)
-		_putchar(a);
-	n++;
+	for (c = 'a'; c <= 'z'; c++)
+	{
+	_putchar(c);
+	}
 	_putchar('\n');
+	i++;
 	}
 }
