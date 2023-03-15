@@ -2,7 +2,7 @@
 #include "main.h"
 #include <ctype.h>
 #include <string.h>
-
+#include <stdlib.h>
 
 /**
  * main - adds positive numbers
@@ -12,7 +12,7 @@
 */
 int main(int argc, char *argv[])
 {
-	int i, length, sum,j;
+	int i, length, sum, j;
 	char *ptr;
 
 	if (argc < 2)
