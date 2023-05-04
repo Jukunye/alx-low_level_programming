@@ -11,3 +11,6 @@
 
   * [3-set_bit.c](./3-set_bit.c): C function that sets the value of a bit at a given index
   to `1`.
+
+  * [4-clear_bit.c](./4-clear_bit.c): function that sets the value of a bit at
+  a given index to `0`.
