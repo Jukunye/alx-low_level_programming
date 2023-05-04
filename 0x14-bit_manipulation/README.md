@@ -8,3 +8,6 @@
 
   * [2-get_bit.c](./2-get_bit.c): function that returns the value of a bit at a
   given index.
+
+  * [3-set_bit.c](./3-set_bit.c): C function that sets the value of a bit at a given index
+  to `1`.
