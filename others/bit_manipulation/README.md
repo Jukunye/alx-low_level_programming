@@ -14,3 +14,6 @@
 
   * [4-clear_bit.c](./4-clear_bit.c): function that sets the value of a bit at
   a given index to `0`.
+
+  * [5-flip_bits.c](./5-flip_bits.c): function that returns the number of bits needed
+  to be flipped to get from one number to another.
