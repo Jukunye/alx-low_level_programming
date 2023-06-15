@@ -3,7 +3,7 @@
 
 /**
  * *_memset - fills memory with a constant byte passed
- * @s: pointer to memory
+ * @p: pointer to memory
  * @b: char to fill with
  * @n: number of times (Limit)
  *
