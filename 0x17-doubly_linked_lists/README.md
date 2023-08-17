@@ -10,3 +10,5 @@
 2. [Add node](./2-add_dnodeint.c) - adds a new node at the beginning of a list.
 
 3. [Add node at the end](./3-add_dnodeint_end.c) adds a new node at the end of a list.
+
+4. [Free list](./4-free_dlistint.c) - frees a list.
