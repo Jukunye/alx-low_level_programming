@@ -12,3 +12,5 @@
 3. [Add node at the end](./3-add_dnodeint_end.c) adds a new node at the end of a list.
 
 4. [Free list](./4-free_dlistint.c) - frees a list.
+
+5. [Get node at index](./5-get_dnodeint.c) - function that returns the nth node of a list.
