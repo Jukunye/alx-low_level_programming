@@ -14,3 +14,5 @@
 4. [Free list](./4-free_dlistint.c) - frees a list.
 
 5. [Get node at index](./5-get_dnodeint.c) - function that returns the nth node of a list.
+
+6. [Sum list](./6-sum_dlistint.c) - finds the sum of all the data(n) of a list.
