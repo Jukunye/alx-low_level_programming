@@ -1,5 +1,7 @@
 #include "hash_tables.h"
 
+int shash_table_set(shash_table_t *ht, const char *key, const char *value);
+
 /**
  * shash_table_create - creates a sorted hash table
  * @size: is the size of the array
@@ -43,77 +45,88 @@ shash_table_t *shash_table_create(unsigned long int size)
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-    unsigned long int index;
-	shash_node_t *current, *new_node;
+	unsigned long int index;
+	shash_node_t *current, *new_node, *tmp;
 	char *new_value;
 
-    if (ht == NULL || key == NULL || value == NULL || *key == '\0') {
-        return (0);
-    }
+	if (ht == NULL || key == NULL || value == NULL || *key == '\0')
+		return (0);
 
-    /* Allocate memory for a copy of the value. */
-    new_value = strdup(value);
-    if (new_value == NULL) {
-        return (0);
-    }
+	/* Allocate memory for a copy of the value. */
+	new_value = strdup(value);
+	if (new_value == NULL)
+		return (0);
 
-    index = key_index((const unsigned char *)key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
 
-    /* Check if the key already exists in the hash table. */
-    current = ht->array[index];
-    while (current) {
-        if (strcmp(current->key, key) == 0) {
-            free(current->value);
-            current->value = new_value;
-            return (1);
-        }
-        current = current->next;
-    }
+	/* Check if the key already exists in the hash table. */
+	current = ht->array[index];
+	while (current)
+	{
+		if (strcmp(current->key, key) == 0)
+		{
+			free(current->value);
+			current->value = new_value;
+			return (1);
+		}
+		current = current->next;
+	}
 
-    /* Key does not exist, create a new node. */
-    new_node = malloc(sizeof(shash_node_t));
-    if (new_node == NULL) {
-        free(new_value);
-        return (0);
-    }
-    new_node->key = strdup(key);
-    if (new_node->key == NULL) {
-        free(new_value);
-        free(new_node);
-        return (0);
-    }
-    new_node->value = new_value;
-    new_node->next = ht->array[index];
-    ht->array[index] = new_node;
+	/* Key does not exist, create a new node. */
+	new_node = malloc(sizeof(shash_node_t));
+	if (new_node == NULL)
+	{
+		free(new_value);
+		return (0);
+	}
+	new_node->key = strdup(key);
+	if (new_node->key == NULL)
+	{
+		free(new_value);
+		free(new_node);
+		return (0);
+	}
+	new_node->value = new_value;
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
 
-    /* Update the sorted linked list. */
-    if (ht->shead == NULL || strcmp(ht->shead->key, key) > 0) {
-        new_node->sprev = NULL;
-        new_node->snext = ht->shead;
-        if (ht->shead != NULL) {
-            ht->shead->sprev = new_node;
-        }
-        ht->shead = new_node;
-        if (ht->stail == NULL) {
-            ht->stail = new_node;
-        }
-    } else {
-        /* Insert in the middle or at the end. */
-        shash_node_t *tmp = ht->shead;
-        while (tmp->snext != NULL && strcmp(tmp->snext->key, key) < 0) {
-            tmp = tmp->snext;
-        }
-        new_node->sprev = tmp;
-        new_node->snext = tmp->snext;
-        if (tmp->snext == NULL) {
-            ht->stail = new_node;
-        } else {
-            tmp->snext->sprev = new_node;
-        }
-        tmp->snext = new_node;
-    }
+	/* Update the sorted linked list. */
+	if (ht->shead == NULL || strcmp(ht->shead->key, key) > 0)
+	{
+		new_node->sprev = NULL;
+		new_node->snext = ht->shead;
+		if (ht->shead != NULL)
+		{
+			ht->shead->sprev = new_node;
+		}
+		ht->shead = new_node;
+		if (ht->stail == NULL)
+		{
+			ht->stail = new_node;
+		}
+	}
+	else
+	{
+		/* Insert in the middle or at the end. */
+		tmp = ht->shead;
+		while (tmp->snext != NULL && strcmp(tmp->snext->key, key) < 0)
+		{
+			tmp = tmp->snext;
+		}
+		new_node->sprev = tmp;
+		new_node->snext = tmp->snext;
+		if (tmp->snext == NULL)
+		{
+			ht->stail = new_node;
+		}
+		else
+		{
+			tmp->snext->sprev = new_node;
+		}
+		tmp->snext = new_node;
+	}
 
-    return (1);  /* Insertion successful.*/
+	return (1);  /* Insertion successful.*/
 }
 
 
